@@ -103,6 +103,7 @@ nav {
 }
 
 .nav__link {
+    position: relative;
     margin: 0 24px;
     font-size: 14px;
     font-weight: 600;
