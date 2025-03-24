@@ -27,24 +27,15 @@ section {
     letter-spacing: 0.025em;
 }
 
+a {
+    display: inline;
+    text-decoration: none;
+}
+
 h1 {
     font-size: 48px;
     color: #1a202c;
     line-height: 1.25;
-}
-
-h2 {
-    h2 {
-        display: block;
-        font-size: 1.5em;
-        margin-block-start: 0.83em;
-        margin-block-end: 0.83em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        font-weight: bold;
-        unicode-bidi: isolate;
-    }
-
 }
 
 .purple {
@@ -56,11 +47,24 @@ p {
     line-height: 1.5;
 }
 
+button {
+    cursor: pointer;
+    border: none
+}
+
+.btn:hover {
+    background-color: rgba(80,17,204);
+}
+
 .row {
     width: 100%;
     max-width: 1280%;
     margin: 0 auto;
 }
+
+
+
+/* NAVBAR */
 
 nav {
     display: flex;
@@ -108,10 +112,33 @@ nav {
     transition: all 300ms;
 }
 
-a {
-    display: inline;
-    text-decoration: none;
+.nav__link:after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -6px;
+    height: 2px;
+    width: 100%;
+    background: #6415ff;
+    transition: all 300ms;
+    opacity: 0;
 }
+
+.nav__link:hover:after {
+    opacity: 1;
+}
+
+.nav__link--primary:after {
+    content: "";
+    width: 0;
+    height: 0;
+}
+
+.nav__link:hover {
+    color: #6415ff;
+}
+
+
 
 .login {
     margin-left: 48px;
@@ -127,6 +154,10 @@ a {
     line-height: 1.5;
     width: auto;
     transition: all 300ms;
+} 
+
+.nav__link--primary:hover {
+    background-color: rgba(80, 17, 204);
 }
 
 .btn__menu {
@@ -136,10 +167,10 @@ a {
     transition: all 300ms ease;
 }
 
-button {
-    cursor: pointer;
-    border: none
+.btn__menu--svg:hover {
+    filter: invert(26%) sepia(94%) saturate(7476%) hue-rotate(261deg) brightness(94%) contrast(115%);
 }
+
 
 .modal {
     position: fixed;
@@ -157,6 +188,12 @@ button {
     opacity: 0;
     transform: translateX(300%);
     transition: all 300ms;
+}
+
+.menu--open .modal {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .btn__menu--close {
@@ -259,6 +296,10 @@ header .row {
     font-weight: 700;
     font-size: 16px;
     transition: all 300ms;
+}
+
+.header__email--btn:hover {
+    background-color: rgba(60, 13, 153);
 }
 
 .header__customers--title {
@@ -429,6 +470,10 @@ img {
     color: #fff;
     font-weight: bold;
     transition: all 300ms;
+}  
+
+.btn:hover {
+    background-color: rgba(80, 17, 204);
 }
 
 .quality__img {
@@ -460,34 +505,29 @@ img {
 
 /* STEPS */
 
-#steps .row{
+#steps .row {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.steps__description,
 .steps__img--wrapper {
-    display: flex;
-    position: relative;
     width: 50%;
 }
 
-.steps__grid {
-    position: absolute;
-    opacity: 0.15;
-    right: 0;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(50%) scaleX(1) scaleY(1);
-    width: 80px;
-    height: 80px;
-    fill: rgba(100,21,255);
-    z-index: 1;
+.steps__img--wrapper {
+    display: flex;
+    position: relative;
+}
+
+.steps__img {
+    z-index: 2;
 }
 
 .steps__description {
-  padding: 32px;
-  padding-left: 64px;
+    padding: 32px 0;
+    padding-left: 64px;
 }
 
 .step {
@@ -523,6 +563,19 @@ img {
     margin-top: 12px;
     font-weight: 500;
     line-height: 2;
+}
+
+.steps__grid {
+    position: absolute;
+    opacity: 0.15;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%) scaleX(1) scaleY(1);
+    width: 80px;
+    height: 80px;
+    fill: rgba(100,21,255);
+    z-index: 1;
 }
 
 /* VALUES */
@@ -664,9 +717,10 @@ img {
     background: linear-gradient(115deg, rgb(56, 178, 172) 0%, rgb(129, 230, 217) 100%);
 }
 
-.plan:nth-child(2) .plan__middle {
-    border-top: 2px solid rgb(102, 126, 234);
-    border-bottom: 2px solid rgb(102, 126, 234);
+
+.plan__button:hover {
+    transform: translate(1px, -1px);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 
 .plan:nth-child(2) {
@@ -678,6 +732,17 @@ img {
 .plan:nth-child(2) .plan__button {
     color: #6415ff;
     background-color: #f7fafc;
+}
+
+
+.plan:nth-child(2) .plan__name, .plan:nth-child(2) .plan__price, .plan:nth-child(2) .plan__target, .plan:nth-child(2) .plan__duration, .plan:nth-child(2) .plan__feature {
+    color: #f7fafc;
+}
+
+
+
+.plan:nth-child(2) {
+    background: linear-gradient(135deg, rgb(76, 81, 191) 0%, rgb(102, 126, 234) 100%);
 }
 
 .plan:nth-child(2) .plan__stripe {
@@ -726,6 +791,11 @@ img {
 .plan:nth-child(1) .plan__middle, .plan:nth-child(3 ) .plan__middle {
     border-top: 2px solid rgb(229, 231, 235);
     border-bottom: 2px solid rgb(229, 231, 235);
+}
+
+.plan:nth-child(2) .plan__middle {
+    border-top: 2px solid rgb(102, 126, 234);
+    border-bottom: 2px solid rgb(102, 126, 234);
 }
 
 .plan__target {
